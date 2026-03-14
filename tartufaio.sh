@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# scan_smb_shares.sh
+# tartufaio.sh
 #
 # Usage:
 #   sudo ./tartufaio.sh -i <shares_file> -o <output_folder> [OPTIONS]
