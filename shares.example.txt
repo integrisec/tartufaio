@@ -1,0 +1,24 @@
+# shares.example.txt
+# ──────────────────────────────────────────────────────────────────────────────
+# One UNC/SMB path per line.
+# Both slash styles are accepted:  //server/share  or  \\server\share
+# Lines beginning with # and blank lines are ignored.
+#
+# Copy this file to shares.txt (which is in .gitignore) and edit as needed.
+# ──────────────────────────────────────────────────────────────────────────────
+
+# Domain file servers
+//fileserver01/Finance
+//fileserver01/HR
+//fileserver01/IT
+
+# NAS with FQDN
+//nas.corp.local/Backups
+//nas.corp.local/Archive
+
+# Windows-style backslash paths are fine too
+\\dc01\SYSVOL
+\\dc01\NETLOGON
+
+# Remote office
+//ro-fs01/Public

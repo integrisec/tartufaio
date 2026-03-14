@@ -1,0 +1,51 @@
+# ── Credentials & secrets ──────────────────────────────────────────────────────
+# NEVER commit credentials or scan output to version control.
+creds.txt
+creds.*.txt
+*.creds
+*.credentials
+secrets.txt
+passwords.txt
+
+# ── Scan output ────────────────────────────────────────────────────────────────
+output/
+results/
+logs/
+*.log
+
+# ── Input share lists that may contain internal hostnames ─────────────────────
+shares.txt
+targets.txt
+hosts.txt
+# Keep only the example files (shares.example.txt, creds.example.txt)
+!*.example.txt
+
+# ── OS artefacts ───────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ── Editor & IDE ───────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+\#*\#
+.#*
+
+# ── Shell history that might end up here by accident ──────────────────────────
+.bash_history
+.zsh_history
+
+# ── Temporary / test files ────────────────────────────────────────────────────
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig

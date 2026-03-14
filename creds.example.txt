@@ -1,0 +1,34 @@
+# creds.example.txt
+# ──────────────────────────────────────────────────────────────────────────────
+# One credential set per line.
+# Format:  username:password[:domain]
+#
+#   - The domain field is OPTIONAL; it defaults to WORKGROUP when omitted.
+#   - Passwords may be empty (guest / null session) — just omit everything
+#     after the first colon.
+#   - Lines beginning with # and blank lines are ignored.
+#   - Credentials are tried in the order listed.
+#
+# SECURITY: copy this to creds.txt (which is in .gitignore), fill in real
+# values, and restrict permissions:
+#
+#   cp creds.example.txt creds.txt
+#   chmod 600 creds.txt
+#
+# NEVER commit creds.txt or any file containing real credentials.
+# ──────────────────────────────────────────────────────────────────────────────
+
+# Domain administrator
+CORP\Administrator:ExamplePassword1!:CORP
+
+# Regular domain user
+CORP\jsmith:AnotherPassword2@:CORP
+
+# Local administrator (no domain needed — defaults to WORKGROUP)
+administrator:LocalAdminPass3#
+
+# Service account
+svc_backup:ServicePass4$:CORP
+
+# Guest / null session (empty password)
+guest:
