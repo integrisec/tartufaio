@@ -42,7 +42,7 @@ multiple shares and credential sets need to be evaluated quickly.
 - Auto-installs `cifs-utils` (via `apt`, `dnf`, or `yum`) and TruffleHog if not present
 - Mounts shares **read-only** — no modifications to target systems
 - Cleans up mount points automatically, even on crash or Ctrl-C (`trap EXIT`)
-- Colour-coded output; scan summary at the end
+- color-coded output; scan summary at the end
 - Log filenames encode the actual server and share name:
   `trufflehog_<server>_<share>.log`
 
