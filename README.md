@@ -3,15 +3,15 @@
 ```
   +------------------------------------------------------------------+
   |                                                                  |
-  |     T  A  R  T  U  F  A  I  O                                   |
-  |        SMB Share Secret Scanner                                  |
-  |        "il cacciatore di tartufi"                                |
+  |                    T  A  R  T  U  F  A  I  O                     |
+  |                     SMB Share Secret Scanner                     |
+  |                    "il cacciatore di tartufi"                    |
   |                                                                  |
   |          _______                                                 |
   |         (_______) .---.                                          |
   |         ( o   o )/     \           _______                       |
   |          \ ___ / | BAG |          / o   o \                      |
-  |           \___/   \___/          (  (vvv)  )~~  *sniff sniff*   |
+  |           \___/   \___/          (  (vvv)  )~~  *sniff sniff*    |
   |           /| |\     |             \_______/                      |
   |          / | | \    | <-- stick      | |                         |
   |         /  | |  \   |            ~~~-+-+~~~                      |
