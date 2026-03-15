@@ -77,6 +77,16 @@ chmod +x tartufaio.sh
 sudo ./tartufaio.sh -i <shares_file> -o <output_folder> [OPTIONS]
 ```
 
+## Example Usage
+
+1) ```nxc smb ~/targets.txt -u 'DOMAIN\USER' -p 'PASSWORD' --log ~/results.txt --shares```
+2) ```grep -aE "(READ|WRITE|READ,WRITE)" ~/results.txt | sed '/IPC\$\|print\$\|NETLOGON\|SYSVOL/d' > ~/smb-targets.txt```
+3) ```awk '{printf "\\\\%s\\%s\r\n", $9, $12}' ~/smb-targets.txt > tartufaio-targets.txt # For IPs```
+   or
+   ```awk '{printf "\\\\%s.DOMAIN_FQDN\\%s\r\n", $11, $12}' ~/smb-targets.txt > ~/tartufaio-targets.txt # For hostnames```
+4) ```sudo tartufaio.sh -i ~/tartufaio-targets.txt -o ~/tartufaio-results -c ~/creds.txt # or -p 'USER' -p 'PASSWORD' -d 'DOMAIN'```
+5) Profit!
+
 ### Options
 
 | Flag | Description | Default |
