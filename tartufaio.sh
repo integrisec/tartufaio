@@ -50,7 +50,7 @@
 
 set -euo pipefail
 
-# ── Colour helpers ─────────────────────────────────────────────────────────────
+# ── Color helpers ─────────────────────────────────────────────────────────────
 RED='\033[0;31m'; YELLOW='\033[1;33m'; GREEN='\033[0;32m'
 CYAN='\033[0;36m'; BOLD='\033[1m'; RESET='\033[0m'
 
@@ -123,21 +123,44 @@ load_credentials() {
             # Skip blanks and comments
             [[ -z "$line" || "$line" == \#* ]] && continue
 
-            # Split on the first two colons only: user:pass[:domain]
-            local u p d
-            IFS=':' read -r u p d <<< "$line"
+            # Format: username:password[:domain]
+            #
+            # Parsing strategy that correctly handles colons inside passwords:
+            #   - username  = everything before the FIRST colon
+            #   - remainder = everything after the first colon
+            #   - domain    = the segment after the LAST colon in remainder,
+            #                 but only when it is non-empty and word-like
+            #                 (no whitespace) — distinguishes a real domain
+            #                 field from a password that happens to contain
+            #                 a trailing colon-delimited token
+            #   - password  = everything between the first and last colon
+            #                 (or the entire remainder when no domain present)
+            local u p d remainder
+            u="${line%%:*}"           # everything up to the first colon
+            remainder="${line#*:}"    # everything after the first colon
+
+            if [[ "$remainder" == *:* ]]; then
+                local last_field="${remainder##*:}"
+                if [[ -n "$last_field" && "$last_field" != *[[:space:]]* ]]; then
+                    # Non-empty, whitespace-free trailing field → treat as domain
+                    d="$last_field"
+                    p="${remainder%:*}"   # everything before the last colon
+                else
+                    # Looks like part of the password — no domain supplied
+                    p="$remainder"
+                    d="WORKGROUP"
+                fi
+            else
+                # Only one colon in the line — remainder is purely the password
+                p="$remainder"
+                d="WORKGROUP"
+            fi
 
             # username is mandatory
             if [[ -z "$u" ]]; then
                 warn "Credentials file line $lineno: empty username — skipping."
                 continue
             fi
-
-            # password may be empty (null session / guest)
-            p="${p:-}"
-
-            # domain defaults to WORKGROUP
-            d="${d:-WORKGROUP}"
 
             CRED_USERS+=("$u")
             CRED_PASSES+=("$p")
