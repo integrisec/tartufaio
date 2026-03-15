@@ -129,16 +129,28 @@ lines are ignored.
 Format: `username:password[:domain]` — one set per line. The domain field is optional and
 defaults to `WORKGROUP`. Passwords may be empty (guest / null session).
 
+Colons inside passwords are supported. The parser splits on the **first** colon to extract
+the username, and treats the **last** colon-delimited token as the domain (when it is
+non-empty and contains no spaces). Everything in between is the password.
+
 ```
 # Domain admin
 CORP\jsmith:P@ssw0rd!:CORP
 
-# Local administrator fallback
+# Password containing colons
+jsmith:P@ss:w0rd!:CORP
+
+# Local administrator fallback (no domain)
 administrator:Welcome1
 
 # Guest / null session
 guest:
 ```
+
+> **Edge case:** if your password ends with a colon-delimited word-like token and you are
+> not supplying a domain, the parser will interpret that final token as the domain. To avoid
+> this, append a trailing colon to force no domain: `jsmith:P@ss:word:` — the empty final
+> field is ignored and `WORKGROUP` is used.
 
 > **Security note:** Restrict permissions on this file (`chmod 600 creds.txt`) and never
 > commit it to version control. See `.gitignore`.
