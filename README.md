@@ -207,8 +207,8 @@ Each log file begins with a header identifying the share and the credential used
 
 ## Disclaimer
 
-This tool is intended for **authorised security testing only**. Only run it against systems
-you own or have explicit written permission to test. Unauthorised access to computer systems
+This tool is intended for **authorized security testing only**. Only run it against systems
+you own or have explicit written permission to test. Unauthorized access to computer systems
 is illegal. The authors accept no liability for misuse.
 
 ---
