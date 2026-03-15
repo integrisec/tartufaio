@@ -20,10 +20,10 @@
   +------------------------------------------------------------------+
 ```
 
-**tartufaio** (*il cacciatore di tartufi* — "the truffle hunter") is a Bash script for
-automated secret scanning across SMB/CIFS network shares. It mounts each share, runs
-[TruffleHog](https://github.com/trufflesecurity/trufflehog) against the filesystem, saves
-the results, unmounts, and moves on — iterating through a list of UNC paths and a list of
+**tartufaio** (*il cacciatore di tartufi* — "the truffle hunter") (pronounced tar-too-FAH-yoh)
+is a Bash script for automated secret scanning across SMB/CIFS network shares. It mounts each
+share, runs [TruffleHog](https://github.com/trufflesecurity/trufflehog) against the filesystem,
+saves the results, unmounts, and moves on — iterating through a list of UNC paths and a list of
 credential sets automatically.
 
 Designed for internal red team engagements, penetration tests, and security audits where
