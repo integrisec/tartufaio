@@ -64,7 +64,7 @@ multiple shares and credential sets need to be evaluated quickly.
 ## Installation
 
 ```bash
-git clone https://github.com/youruser/tartufaio.git
+git clone https://github.com/integrisec/tartufaio.git
 cd tartufaio
 chmod +x tartufaio.sh
 ```
